@@ -1,0 +1,2 @@
+include ':app', ':framelibrary'
+rootProject.name='BaseFrame'

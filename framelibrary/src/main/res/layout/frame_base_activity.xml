@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fl_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#F0F0F0" />
+
+<!--    <LinearLayout
+        android:id="@+id/ll_bottom_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" />-->
+
+    <me.sugarkawhi.bottomnavigationbar.BottomNavigationBar
+        android:id="@+id/bottomNavigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_gravity="bottom"
+        app:bnb_layoutId="@layout/frame_include_bottom"
+        app:bnb_selectedColor="#000000"
+        app:bnb_unSelectedColor="#999999"
+        app:bnb_anim="true"
+        app:bnb_scale_ratio="1.1" />
+</LinearLayout>
