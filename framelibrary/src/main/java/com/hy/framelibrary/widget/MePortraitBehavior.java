@@ -38,15 +38,16 @@ public class MePortraitBehavior extends CoordinatorLayout.Behavior<ImageView> {
     public boolean onDependentViewChanged(CoordinatorLayout parent, ImageView child, View dependency) {
         // 计算X轴坐标
         if (mOriginalHeaderX == 0) {
-            this.mOriginalHeaderX = dependency.getWidth() / 2 - child.getWidth() / 2;
+            this.mOriginalHeaderX = (int) child.getX();
         }
         // 计算Y轴坐标
         if (mOriginalHeaderY == 0) {
-            mOriginalHeaderY = dependency.getHeight() - child.getHeight();
+            mOriginalHeaderY = (int) child.getY();
         }
 
+        float density = parent.getContext().getResources().getDisplayMetrics().density;
         //计算toolbar从开始移动到最后的百分比
-        float percent = dependency.getY() / mOriginalHeaderY;
+        float percent = dependency.getY() / (dependency.getHeight() - 54 * density);
         if (Math.abs(percent) > 1) {
             percent = 1;
         } else {
@@ -54,6 +55,8 @@ public class MePortraitBehavior extends CoordinatorLayout.Behavior<ImageView> {
         }
         child.setY(mOriginalHeaderY - mOriginalHeaderY * percent);
         child.setX(mOriginalHeaderX - mOriginalHeaderX * percent);
+        child.setScaleX(1f - (0.4f * percent));
+        child.setScaleY(1f - (0.4f * percent));
         System.out.println("依赖控件高度变化:" + percent + "   " + dependency.getY() + "   " + dependency.getHeight() + "   自身控件位置变化:" + child.getY() + "  " + child.getX());
         return true;
     }
