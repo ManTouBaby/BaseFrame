@@ -4,64 +4,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
+            android:id="@+id/mCollapsingToolbarLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/toolbar">
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <RelativeLayout
+            <ImageView
+                android:id="@+id/iv"
                 android:layout_width="match_parent"
-                android:layout_height="228dp"
-                android:background="#B86464"
-                app:layout_collapseMode="parallax">
+                android:layout_height="240dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/icon_me_bg"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.9" />
 
-                <ImageView
-                    android:id="@+id/mt_pro"
-                    android:layout_width="68dp"
-                    android:layout_height="68dp"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginLeft="16dp"
-                    android:src="@mipmap/icon_pro" />
-
-                <LinearLayout
-                    android:id="@+id/mt_user_content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/mt_pro"
-                    android:layout_alignBottom="@+id/mt_pro"
-                    android:layout_marginLeft="12dp"
-                    android:orientation="vertical"
-                    android:layout_toRightOf="@+id/mt_pro"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="名称"
-                        android:textColor="#FFF"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="单位"
-                        android:textColor="#FFF"
-                        android:layout_marginTop="4dp"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </RelativeLayout>
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                app:layout_collapseMode="pin" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
+
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
@@ -69,5 +38,81 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    <ImageView
+        android:id="@+id/mt_pro"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="52dp"
+        app:layout_behavior="com.hy.framelibrary.widget.MePortraitBehavior"
+        android:src="@mipmap/icon_pro" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="144dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="张国强"
+            android:textColor="#FFF"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="18dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="#FFFFFF" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="457625"
+            android:textColor="#FFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="176dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="广州市公安局"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="18dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="#FFFFFF" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="副局长"
+            android:textColor="#FFF"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
