@@ -11,8 +11,9 @@
 
     <ImageView
         android:id="@+id/bnb_item_icon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="28dp"
+        android:padding="3dp"
+        android:layout_height="28dp"
         android:scaleType="fitXY" />
 
     <TextView

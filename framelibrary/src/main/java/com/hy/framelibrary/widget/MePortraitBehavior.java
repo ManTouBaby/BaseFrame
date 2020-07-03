@@ -47,17 +47,26 @@ public class MePortraitBehavior extends CoordinatorLayout.Behavior<ImageView> {
 
         float density = parent.getContext().getResources().getDisplayMetrics().density;
         //计算toolbar从开始移动到最后的百分比
-        float percent = dependency.getY() / (dependency.getHeight() - 54 * density);
-        if (Math.abs(percent) > 1) {
-            percent = 1;
+        float percentY = dependency.getY() / ((dependency.getHeight() - 86 * density));
+        float percentX = dependency.getY() / (dependency.getHeight() - 86 * density);
+        if (Math.abs(percentY) > 1) {
+            percentY = 1;
         } else {
-            percent = Math.abs(percent);
+            percentY = Math.abs(percentY);
         }
-        child.setY(mOriginalHeaderY - mOriginalHeaderY * percent);
-        child.setX(mOriginalHeaderX - mOriginalHeaderX * percent);
-        child.setScaleX(1f - (0.4f * percent));
-        child.setScaleY(1f - (0.4f * percent));
-        System.out.println("依赖控件高度变化:" + percent + "   " + dependency.getY() + "   " + dependency.getHeight() + "   自身控件位置变化:" + child.getY() + "  " + child.getX());
+        if (Math.abs(percentX) > 1) {
+            percentX = 1;
+        } else {
+            percentX = Math.abs(percentX);
+        }
+        float y = mOriginalHeaderY - (mOriginalHeaderY - 21 * density) * percentY;
+        float x = mOriginalHeaderX - mOriginalHeaderX * percentX;
+        child.setY(y);
+        child.setX(x);
+        child.setScaleX(1f - (0.45f * percentX));
+        child.setScaleY(1f - (0.45f * percentX));
+        System.out.println("控件位置变化:" + y + "  " + x + "   " + percentY);
+//        System.out.println("依赖控件高度变化:" + percentX + "   " + dependency.getY() + "   " + dependency.getHeight() + "   自身控件位置变化:" + child.getY() + "  " + child.getX());
         return true;
     }
 }

@@ -8,6 +8,7 @@ public class ACWelcome extends BaseACWelcome {
     @Override
     protected void initWelcomeView() {
         setWelcomeBG(R.mipmap.icon_me_bg);
+
     }
 
     @Override

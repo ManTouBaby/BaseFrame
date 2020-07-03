@@ -3,26 +3,25 @@ package com.hy.framelibrary.page.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
-import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 
 import com.hy.framelibrary.R;
-import com.hy.framelibrary.utils.ToastUtil;
+import com.hy.framelibrary.utils.HYToast;
 
-public abstract class BaseAcLogin extends BaseAC {
+public abstract class BaseAcLogin extends BasePAC {
     private RelativeLayout mLoginContainer;
     private EditText loginUser;
     private EditText loginPW;
     private CheckBox checkBox;
+    private TextView mAppVerison;
 
     private SharedPreferences mLoginRemember;
 
@@ -32,11 +31,12 @@ public abstract class BaseAcLogin extends BaseAC {
     }
 
     @Override
-    protected void initView(Bundle savedInstanceState) {
+    protected void initPView(Bundle savedInstanceState) {
         setFullScreen();
         mLoginContainer = findViewById(R.id.frame_login_bg);
         loginUser = findViewById(R.id.mi_login_user);
         loginPW = findViewById(R.id.mi_login_ps);
+        mAppVerison = findViewById(R.id.frame_app_version);
         checkBox = findViewById(R.id.login_remember);
 
         mLoginRemember = getSharedPreferences("LoginRemember", Context.MODE_PRIVATE);
@@ -54,17 +54,21 @@ public abstract class BaseAcLogin extends BaseAC {
             String loginName = loginUser.getText().toString();
             String loginPW = this.loginPW.getText().toString();
             if (TextUtils.isEmpty(loginName)) {
-                ToastUtil.showShort(this, "登录账号不能为空");
+                HYToast.showShort("登录账号不能为空");
                 return;
             }
             if (TextUtils.isEmpty(loginPW)) {
-                ToastUtil.showShort(this, "登录密码不能为空");
+                HYToast.showShort("登录密码不能为空");
                 return;
             }
             doLogin(loginName, loginPW);
         });
 
         initLoginView();
+    }
+
+    protected void setVersion(String version) {
+        mAppVerison.setText(version);
     }
 
     protected abstract void initLoginView();
@@ -83,7 +87,7 @@ public abstract class BaseAcLogin extends BaseAC {
     }
 
     protected void loginFail(String msg) {
-        ToastUtil.showShort(this, msg);
+        HYToast.showShort(msg);
     }
 
     protected abstract void doLogin(String userName, String userPW);

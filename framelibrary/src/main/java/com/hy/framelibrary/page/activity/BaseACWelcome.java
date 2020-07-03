@@ -1,10 +1,8 @@
 package com.hy.framelibrary.page.activity;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -12,7 +10,7 @@ import android.support.annotation.DrawableRes;
 import android.widget.ImageView;
 
 import com.hy.framelibrary.R;
-import com.hy.framelibrary.utils.ToastUtil;
+import com.hy.framelibrary.utils.HYToast;
 
 import java.util.List;
 import java.util.Timer;
@@ -107,7 +105,7 @@ public abstract class BaseACWelcome extends BaseAC implements EasyPermissions.Pe
                 .setMessage("必须同意相关权限才能使用")
                 .setNegativeButton("取消", (dialog, which) -> {
                     dialog.dismiss();
-                    ToastUtil.showShort(getContext(), "程序将在3秒后退出");
+                    HYToast.showShort("程序将在3秒后退出");
                     new Timer().schedule(new TimerTask() {
                         @Override
                         public void run() {

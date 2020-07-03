@@ -18,8 +18,6 @@ public class TranslucentBehavior extends CoordinatorLayout.Behavior<Toolbar> {
     /**标题栏的高度*/
     private int mToolbarHeight = 0;
 
-    public TranslucentBehavior(){}
-
     public TranslucentBehavior(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -34,7 +32,7 @@ public class TranslucentBehavior extends CoordinatorLayout.Behavior<Toolbar> {
      */
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, Toolbar child, View dependency) {
-        System.out.println("绘制次数-------------");
+
         // 初始化高度
         if (mToolbarHeight == 0) {
             mToolbarHeight = child.getBottom() * 2;//为了更慢的
@@ -53,8 +51,8 @@ public class TranslucentBehavior extends CoordinatorLayout.Behavior<Toolbar> {
 
 
         //设置背景颜色
-        child.setBackgroundColor(Color.argb((int) alpha, 63, 81, 181));
-
+//        child.setBackgroundColor(Color.argb((int) alpha, 63, 81, 181));
+        child.setAlpha(alpha);
         return true;
     }
 }

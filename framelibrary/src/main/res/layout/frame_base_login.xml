@@ -99,11 +99,12 @@
 
 
     <TextView
+        android:id="@+id/frame_app_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="58dp"
         android:text="即时通讯1.0.0"
         android:textColor="#AAA" />
 </RelativeLayout>
