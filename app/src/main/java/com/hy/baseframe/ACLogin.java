@@ -1,9 +1,10 @@
 package com.hy.baseframe;
 
-import android.os.Bundle;
-
+import com.hy.baseframe.bean.BaseMusic;
+import com.hy.baseframe.bean.MusicBean;
+import com.hy.baseframe.presenter.LoginPresenter;
 import com.hy.framelibrary.base.BasePresenter;
-import com.hy.framelibrary.base.OnResultListener;
+import com.hy.framelibrary.net.callbck.OnEntityResultListener;
 import com.hy.framelibrary.page.activity.BaseAcLogin;
 import com.hy.framelibrary.utils.HYToast;
 
@@ -27,17 +28,15 @@ public class ACLogin extends BaseAcLogin {
 
     @Override
     protected void doLogin(String userName, String userPW) {
-        mLoginPresenter.login(new OnResultListener<String>() {
+        mLoginPresenter.loginPost(new OnEntityResultListener<BaseMusic<MusicBean>>() {
             @Override
-            public void onSuccess(String data) {
-
-
+            public void onSuccess(BaseMusic<MusicBean> data) {
                 HYToast.showShort("登录成功");
                 loginSuccess();
             }
 
             @Override
-            public void onFail(String message) {
+            public void onError(Exception e) {
                 HYToast.showShort("登录失败");
             }
 

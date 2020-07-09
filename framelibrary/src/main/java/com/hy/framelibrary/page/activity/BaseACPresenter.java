@@ -8,12 +8,11 @@ import com.hy.framelibrary.base.IPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BasePAC extends BaseAC implements IPresenter {
-    private List<BasePresenter> mBasePresenters = new ArrayList<>();
+public abstract class BaseACPresenter extends BaseAC implements IPresenter {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        mBasePresenters = initPresenters();
+        List<BasePresenter> mBasePresenters = initPresenters();
         if (mBasePresenters != null && mBasePresenters.size() > 0) {
             for (BasePresenter basePresenter : mBasePresenters) {
                 getLifecycle().addObserver(basePresenter);

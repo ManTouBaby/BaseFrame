@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.hy.framelibrary.R;
 import com.hy.framelibrary.utils.HYToast;
 
-public abstract class BaseAcLogin extends BasePAC {
+public abstract class BaseAcLogin extends BaseACPresenter {
     private RelativeLayout mLoginContainer;
     private EditText loginUser;
     private EditText loginPW;

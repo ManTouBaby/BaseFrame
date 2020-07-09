@@ -8,12 +8,11 @@ public class ACWelcome extends BaseACWelcome {
     @Override
     protected void initWelcomeView() {
         setWelcomeBG(R.mipmap.icon_me_bg);
-
     }
 
     @Override
     protected Permission[] getPermissions() {
-        return new Permission[]{Permission.CAMERA, Permission.ACCESS_FINE_LOCATION};
+        return new Permission[]{Permission.CAMERA, Permission.ACCESS_FINE_LOCATION, Permission.WRITE_EXTERNAL_STORAGE, Permission.READ_EXTERNAL_STORAGE};
     }
 
     @Override

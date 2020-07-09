@@ -1,5 +1,6 @@
 package com.hy.framelibrary.page.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,12 +13,13 @@ import com.hy.framelibrary.R;
 import com.hy.framelibrary.base.BasePresenter;
 import com.hy.framelibrary.base.IPresenter;
 import com.hy.framelibrary.utils.HYLog;
+import com.zlylib.upperdialog.LoadingDialog;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseAC extends AppCompatActivity{
-    private AlertDialog dialog;
+public abstract class BaseAC extends AppCompatActivity {
+    private Dialog mLoadingDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,20 +48,6 @@ public abstract class BaseAC extends AppCompatActivity{
         }
     }
 
-    protected void startLoading() {
-        if (dialog == null) {
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-            dialog = alertDialog.setView(R.layout.popup_loading).show();
-            dialog.setCanceledOnTouchOutside(false);
-        }
-    }
-
-    protected void stopLoading() {
-        if (dialog != null && dialog.isShowing()) {
-            dialog.dismiss();
-            dialog = null;
-        }
-    }
 
     protected BaseAC getContext() {
         return this;
@@ -83,5 +71,22 @@ public abstract class BaseAC extends AppCompatActivity{
         Intent intent = new Intent(this, aClass);
         if (bundle != null) intent.putExtras(bundle);
         startActivityForResult(intent, requestCode);
+    }
+
+    protected void showLoading(String message) {
+        if (mLoadingDialog == null || !mLoadingDialog.isShowing())
+            mLoadingDialog = LoadingDialog.createLoadingDialog(getContext(), message);
+    }
+
+    protected void closeLoading() {
+        if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+            mLoadingDialog.cancel();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        closeLoading();
     }
 }

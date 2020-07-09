@@ -1,5 +1,6 @@
 package com.hy.framelibrary.page.fragment;
 
+import android.app.Dialog;
 import android.arch.lifecycle.Lifecycle;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,12 +13,14 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.hy.framelibrary.R;
+import com.zlylib.upperdialog.LoadingDialog;
 
 public abstract class BaseFragment extends Fragment {
     private boolean isAddStatusBar = false;
     private int statusColor = -1;
 
     private LinearLayout mFragmentView;
+    private Dialog mLoadingDialog;
 
     @Nullable
     @Override
@@ -78,5 +81,27 @@ public abstract class BaseFragment extends Fragment {
         Intent intent = new Intent(getContext(), aClass);
         if (bundle != null) intent.putExtras(bundle);
         startActivityForResult(intent, requestCode);
+    }
+
+    protected void showLoading(){
+        showLoading("数据加载中...");
+    }
+    protected void showLoading(String message) {
+        if (mLoadingDialog == null || !mLoadingDialog.isShowing()){
+            mLoadingDialog = LoadingDialog.createLoadingDialog(getContext(), message);
+            mLoadingDialog.show();
+        }
+    }
+
+    protected void closeLoading() {
+        if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+            mLoadingDialog.cancel();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        closeLoading();
     }
 }

@@ -1,4 +1,4 @@
-package com.hy.baseframe;
+package com.hy.baseframe.bean;
 
 public class WeatherBean {
 

@@ -8,6 +8,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        HYFrameHelper.initFrame(this, 1);
+        new HYFrameHelper.Builder()
+                .setRetryCount(3)
+                .create(this);
     }
 }

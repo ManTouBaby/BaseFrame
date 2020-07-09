@@ -9,7 +9,7 @@ android {
     }
     defaultConfig {
         applicationId "com.hy.baseframe"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0.0"
@@ -26,6 +26,4 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':framelibrary')
-
-
 }
